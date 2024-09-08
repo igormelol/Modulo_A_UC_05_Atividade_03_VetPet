@@ -1,0 +1,35 @@
+@using ClinicaVetPet.Models
+@model Mensagem
+@{
+    ViewData["Title"] = "Contato";
+}
+
+<div class="container-mensagem">
+    <p>Olá <strong>@Model.nome</strong>!</p>
+    <p>
+        Agradecemos seu contato!
+    </p>
+    <p>
+        Assim que possível responderemos a mensagem em seu e-mail sugerido: <strong>@Model.email</strong>.
+    </p>
+    @if (!string.IsNullOrEmpty(Model.telefone))
+    {
+        <p>
+            Ou por esse WhatsApp adicionado: <strong>@Model.telefone</strong>.
+        </p>
+    }
+    @if (Model.tipoMensagem == 4)
+    {
+        <p>
+            Agendamento para @Model.dataString
+        </p>
+    }
+    <p>
+    Sua mensagem enviada:
+    </p>
+    <p id="mensagem">
+        <strong>@Model.mensagem</strong>
+    </p>
+
+    <button onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-primary">Voltar</button>
+</div>
